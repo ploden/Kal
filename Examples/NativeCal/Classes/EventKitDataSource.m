@@ -80,7 +80,7 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
     NSPredicate *predicate = [eventStore predicateForEventsWithStartDate:fromDate endDate:toDate calendars:nil];
     NSArray *matchedEvents = [eventStore eventsMatchingPredicate:predicate];
     dispatch_async(dispatch_get_main_queue(), ^{
-      NSLog(@"Fetched %d events in %f seconds", [matchedEvents count], -1.f * [fetchProfilerStart timeIntervalSinceNow]);
+      NSLog(@"Fetched %lu events in %f seconds", (unsigned long)[matchedEvents count], -1.f * [fetchProfilerStart timeIntervalSinceNow]);
       [events addObjectsFromArray:matchedEvents];
       [delegate loadedDataSource:self];
     });

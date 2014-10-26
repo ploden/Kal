@@ -69,7 +69,7 @@
 
 - (NSUInteger)numberOfDaysInPreviousPartialWeek
 {
-    int num = [self.baseDate cc_weekday] - 1;
+    NSInteger num = [self.baseDate cc_weekday] - 1;
     if (num == 0)
         num = 7;
     return num;
@@ -80,7 +80,7 @@
   NSDateComponents *c = [self.baseDate cc_componentsForMonthDayAndYear];
   c.day = [self.baseDate cc_numberOfDaysInMonth];
   NSDate *lastDayOfTheMonth = [[NSCalendar currentCalendar] dateFromComponents:c];
-    int num = 7 - [lastDayOfTheMonth cc_weekday];
+    NSInteger num = 7 - [lastDayOfTheMonth cc_weekday];
     if (num == 0)
         num = 7;
     return num;
@@ -91,10 +91,10 @@
   NSMutableArray *days = [NSMutableArray array];
   
   NSDate *beginningOfPreviousMonth = [self.baseDate cc_dateByMovingToFirstDayOfThePreviousMonth];
-  int n = [beginningOfPreviousMonth cc_numberOfDaysInMonth];
-  int numPartialDays = [self numberOfDaysInPreviousPartialWeek];
+  NSInteger n = [beginningOfPreviousMonth cc_numberOfDaysInMonth];
+  NSInteger numPartialDays = [self numberOfDaysInPreviousPartialWeek];
   NSDateComponents *c = [beginningOfPreviousMonth cc_componentsForMonthDayAndYear];
-  for (int i = n - (numPartialDays - 1); i < n + 1; i++)
+  for (NSInteger i = n - (numPartialDays - 1); i < n + 1; i++)
     [days addObject:[NSDate dateForDay:i month:c.month year:c.year]];
   
   return days;

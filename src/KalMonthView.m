@@ -107,7 +107,7 @@ extern const CGSize kTileSize;
 {
     for (KalTileView *tile in self.subviews)
     {
-        tile.marked = [dates containsObject:tile.date];
+        if ([dates containsObject:tile.date]) { tile.type |= KalTileTypeMarked; }
         NSString *dayString = [tileAccessibilityFormatter stringFromDate:tile.date];
         if (dayString) {
             NSMutableString *helperText = [[NSMutableString alloc] initWithCapacity:128];
