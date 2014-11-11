@@ -25,7 +25,7 @@ typedef enum {
  */
 @interface KalGridView : UIView
 {
-  id<KalViewDelegate> delegate;  // Assigned.
+  id<KalViewDelegate> __weak delegate;  // Assigned.
   KalLogic *logic;
   KalMonthView *frontMonthView;
   KalMonthView *backMonthView;
