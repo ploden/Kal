@@ -6,6 +6,11 @@ Updated by Leon on 2013-12-27
 
 ![ScrrenShot](https://raw.github.com/phaibin/Kal/master/ScreenShot.png)
 
+Lisence
+--------------
+My fork is available under the WTFPL license. Be free to use it.
+
+
 -----------------------------------------
 Kal - a calendar component for the iPhone
 -----------------------------------------
