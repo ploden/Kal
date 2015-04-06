@@ -16,8 +16,6 @@
 #define SLIDE_UP 1
 #define SLIDE_DOWN 2
 
-const CGSize kTileSize = { 46.f, 48.f };
-
 static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 @interface KalGridView ()
@@ -104,8 +102,8 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     // to accomodate all 7 columns. The 7th day's 2px inner stroke
     // will be clipped off the screen, but that's fine because
     // MobileCal does the same thing.
-    frame.size.width = 7 * kTileSize.width;
-    
+  frame.size.width = 7 * [KalGridView tileSize].width;
+  
     if (self = [super initWithFrame:frame]) {
         _needRemoveRanges = YES;
         self.clipsToBounds = YES;
@@ -253,12 +251,12 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     // set initial positions before the slide
     if (direction == SLIDE_UP) {
         backMonthView.top = keepOneRow
-        ? frontMonthView.bottom - kTileSize.height
+        ? frontMonthView.bottom - [KalGridView tileSize].height
         : frontMonthView.bottom;
     } else if (direction == SLIDE_DOWN) {
         NSUInteger numWeeksToKeep = keepOneRow ? 1 : 0;
         NSInteger numWeeksToSlide = [backMonthView numWeeks] - numWeeksToKeep;
-        backMonthView.top = -numWeeksToSlide * kTileSize.height;
+        backMonthView.top = -numWeeksToSlide * [KalGridView tileSize].height;
     } else {
         backMonthView.top = 0.f;
     }
@@ -340,5 +338,29 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 #pragma mark -
 
++ (CGSize)tileSize {
+    static dispatch_once_t once;
+    static CGSize size;
+    dispatch_once(&once, ^{
+        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+        CGFloat screenMax = fmaxf(screenWidth, screenHeight);
+    
+        if (screenMax == 568.f) {
+            // iPhone 5
+            size = CGSizeMake(46.f, 48.f);
+        } else if (screenMax == 667.f) {
+            // iPhone 6
+            size = CGSizeMake(54.f, 48.f);
+        } else if (screenMax == 736.f) {
+            // iPhone 6+
+            size = CGSizeMake(59.f, 48.f);
+        } else {
+            // iPhone 4
+            size = CGSizeMake(46.f, 48.f);
+        }
+    });
+    return size;
+}
 
 @end

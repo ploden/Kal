@@ -10,31 +10,43 @@
 	<string>Kal</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>45B3182C-150C-43E3-AC8A-641A20D6D870</key>
-		<string>https://github.com/phaibin/Kal.git</string>
+		<key>087811D9999EC639BE6EB35E71107BD0E1F2E9D4</key>
+		<string>github.com:phaibin/Kal.git</string>
+		<key>754F2525A0A5570846ADD90F5D3F84A7BBFA7180</key>
+		<string>https://gh.apple.com/md/issues_ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>src/Kal.xcodeproj/project.xcworkspace</string>
+	<string>src/Kal.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>45B3182C-150C-43E3-AC8A-641A20D6D870</key>
+		<key>087811D9999EC639BE6EB35E71107BD0E1F2E9D4</key>
 		<string>../../..</string>
+		<key>754F2525A0A5570846ADD90F5D3F84A7BBFA7180</key>
+		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/phaibin/Kal.git</string>
+	<string>github.com:phaibin/Kal.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>45B3182C-150C-43E3-AC8A-641A20D6D870</string>
+	<string>087811D9999EC639BE6EB35E71107BD0E1F2E9D4</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>45B3182C-150C-43E3-AC8A-641A20D6D870</string>
+			<string>754F2525A0A5570846ADD90F5D3F84A7BBFA7180</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Kal</string>
+			<string>..</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>087811D9999EC639BE6EB35E71107BD0E1F2E9D4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Kal.ploden</string>
 		</dict>
 	</array>
 </dict>

@@ -6,8 +6,7 @@
 #import "KalTileView.h"
 #import "KalPrivate.h"
 #import <CoreText/CoreText.h>
-
-extern const CGSize kTileSize;
+#import "KalGridView.h"
 
 @implementation KalTileView
 
@@ -36,7 +35,7 @@ extern const CGSize kTileSize;
         textColor = kGrayColor;
     } else if (self.belongsToAdjacentMonth) {
         [RGBCOLOR(240, 240, 240) setFill];
-        CGContextFillRect(ctx, CGRectMake(0.f, 1.f, kTileSize.width, kTileSize.height));
+        CGContextFillRect(ctx, CGRectMake(0.f, 1.f, [KalGridView tileSize].width, [KalGridView tileSize].height));
         textColor = kGrayColor;
     } else {
         textColor = kDarkGrayColor;
@@ -52,8 +51,8 @@ extern const CGSize kTileSize;
             image = [UIImage imageNamed:@"Kal.bundle/kal_tile_selected_today.png"];
         }
         CGRect frame = CGRectMake(0, 0, image.size.width, image.size.height);
-        frame.origin.x = (kTileSize.width - frame.size.width) / 2;
-        frame.origin.y = (kTileSize.height - frame.size.height) / 2;
+        frame.origin.x = ([KalGridView tileSize].width - frame.size.width) / 2;
+        frame.origin.y = ([KalGridView tileSize].height - frame.size.height) / 2;
         [image drawInRect:frame];
         textColor = [UIColor whiteColor];
     } else if (self.state == KalTileStateLeftEnd) {
@@ -62,8 +61,8 @@ extern const CGSize kTileSize;
             image = [UIImage imageNamed:@"Kal.bundle/kal_tile_range_left_today.png"];
         }
         CGRect frame = CGRectMake(0, 0, image.size.width, image.size.height);
-        frame.origin.x = (kTileSize.width - frame.size.width) / 2;
-        frame.origin.y = (kTileSize.height - frame.size.height) / 2;
+        frame.origin.x = ([KalGridView tileSize].width - frame.size.width) / 2;
+        frame.origin.y = ([KalGridView tileSize].height - frame.size.height) / 2;
         [image drawInRect:frame];
         textColor = [UIColor whiteColor];
     } else if (self.state == KalTileStateRightEnd) {
@@ -72,14 +71,14 @@ extern const CGSize kTileSize;
             image = [UIImage imageNamed:@"Kal.bundle/kal_tile_range_right_today.png"];
         }
         CGRect frame = CGRectMake(0, 0, image.size.width, image.size.height);
-        frame.origin.x = (kTileSize.width - frame.size.width) / 2;
-        frame.origin.y = (kTileSize.height - frame.size.height) / 2;
+        frame.origin.x = ([KalGridView tileSize].width - frame.size.width) / 2;
+        frame.origin.y = ([KalGridView tileSize].height - frame.size.height) / 2;
         [image drawInRect:frame];
         textColor = [UIColor whiteColor];
     } else if (self.state == KalTileStateInRange) {
         UIImage *image = [UIImage imageNamed:@"Kal.bundle/kal_tile_range.png"];
         CGRect frame = CGRectMake(0, 0, image.size.width, image.size.height);
-        frame.origin.y = (kTileSize.height - frame.size.height) / 2;
+        frame.origin.y = ([KalGridView tileSize].height - frame.size.height) / 2;
         textColor = kGrayColor;
         [image drawInRect:frame];
     }
@@ -90,8 +89,8 @@ extern const CGSize kTileSize;
         dayText = NSLocalizedString(@"Today", @"");
     CGSize textSize = [dayText sizeWithAttributes:@{NSFontAttributeName:font}];
     CGFloat textX, textY;
-    textX = roundf(0.5f * (kTileSize.width - textSize.width));
-    textY = roundf(0.5f * (kTileSize.height - textSize.height));
+    textX = roundf(0.5f * ([KalGridView tileSize].width - textSize.width));
+    textY = roundf(0.5f * ([KalGridView tileSize].height - textSize.height));
     [dayText drawAtPoint:CGPointMake(textX, textY) withAttributes:@{NSFontAttributeName:font, NSForegroundColorAttributeName:textColor}];
 }
 
@@ -100,7 +99,7 @@ extern const CGSize kTileSize;
     // realign to the grid
     CGRect frame = self.frame;
     frame.origin = origin;
-    frame.size = kTileSize;
+    frame.size = [KalGridView tileSize];
     self.frame = frame;
     
     self.date = nil;

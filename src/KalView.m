@@ -7,6 +7,7 @@
 #import "KalGridView.h"
 #import "KalLogic.h"
 #import "KalPrivate.h"
+#import "KalGridView.h"
 
 @interface KalView ()
 
@@ -69,7 +70,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 - (void)addSubviewsToHeaderView:(UIView *)headerView
 {
-    const CGFloat kChangeMonthButtonWidth = 46.0f;
+  const CGFloat kChangeMonthButtonWidth = [KalGridView tileSize].width;
     const CGFloat kChangeMonthButtonHeight = 30.0f;
     const CGFloat kMonthLabelWidth = 200.0f;
     const CGFloat kHeaderVerticalAdjust = 13.f;
@@ -118,8 +119,9 @@ static const CGFloat kMonthLabelHeight = 17.f;
     NSArray *fullWeekdayNames = [[[NSDateFormatter alloc] init] standaloneWeekdaySymbols];
     NSUInteger firstWeekday = [[NSCalendar currentCalendar] firstWeekday];
     NSUInteger i = firstWeekday - 1;
-    for (CGFloat xOffset = 0.f; xOffset < headerView.width; xOffset += 46.f, i = (i+1)%7) {
-        CGRect weekdayFrame = CGRectMake(xOffset, 30.f, 46.f, kHeaderHeight - 15.f);
+#warning FIXME ploden
+    for (CGFloat xOffset = 0.f; xOffset < headerView.width; xOffset += [KalGridView tileSize].width, i = (i+1)%7) {
+        CGRect weekdayFrame = CGRectMake(xOffset, 30.f, [KalGridView tileSize].width, kHeaderHeight - 15.f);
         UILabel *weekdayLabel = [[UILabel alloc] initWithFrame:weekdayFrame];
         weekdayLabel.backgroundColor = [UIColor clearColor];
         weekdayLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
